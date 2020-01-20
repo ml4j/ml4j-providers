@@ -14,7 +14,8 @@
 package org.ml4j.provider.enums;
 
 /**
- * Represents an Enum from a particular provider without requiring that the Enum be on the classpath.
+ * Represents an Enum from a particular provider without requiring that the Enum
+ * be on the classpath.
  * 
  * Aids decoupling.
  * 
@@ -24,13 +25,19 @@ public interface ProviderEnum {
 
 	String getProviderName();
 
-	default boolean isPlaceholder() { return false;} 
+	default boolean isPlaceholder() {
+		return false;
+	}
 
-	default String getEnumName() { return getEnum().name(); }
-	
-	default String getQualifiedEnumName() { return getEnum().getDeclaringClass().getName() + "." + getEnumName(); }
-	
+	default String getEnumName() {
+		return getEnum().name();
+	}
+
+	default String getQualifiedEnumName() {
+		return getEnum().getDeclaringClass().getName() + "." + getEnumName();
+	}
+
 	Enum<?> getEnum();
-	
-	<E extends Enum<E>> E getEnumAsType(Class<E> type);	
+
+	<E extends Enum<E>> E getEnumAsType(Class<E> type);
 }

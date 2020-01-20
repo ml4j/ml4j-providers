@@ -16,8 +16,8 @@ package org.ml4j.provider.enums;
 import org.ml4j.provider.Provider;
 
 /**
- * Represents an Enum from a particular provider that may not exist yet, but for which we wish to 
- * create a placeholder.
+ * Represents an Enum from a particular provider that may not exist yet, but for
+ * which we wish to create a placeholder.
  * 
  * Aids decoupling.
  * 
@@ -38,5 +38,5 @@ public class PlaceholderProviderEnum extends DefaultProviderEnum<PlaceholderProv
 	public boolean isPlaceholder() {
 		return true;
 	}
-	
+
 }

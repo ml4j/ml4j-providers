@@ -24,19 +24,19 @@ public class ProviderEnumNotFoundException extends RuntimeException {
 	 * Default serialization id.
 	 */
 	private static final long serialVersionUID = 1L;
-	
 
 	public ProviderEnumNotFoundException(ProviderEnums providerEnums, Provider provider) {
 		this(providerEnums, provider.name());
 	}
-	
+
 	public ProviderEnumNotFoundException(ProviderEnums providerEnums, String providerName) {
-		super(providerEnums.getClass().getName() + "." + providerEnums + " does not include an enum from provider:" + providerName);
+		super(providerEnums.getClass().getName() + "." + providerEnums + " does not include an enum from provider:"
+				+ providerName);
 	}
-	
+
 	public ProviderEnumNotFoundException(DefaultProviderEnum<?> providerEnum) {
-		super("Provider enum " + providerEnum.getProviderName() + ":" + providerEnum.getEnumTypeClassName() 
-			+ "." + providerEnum.getEnumName() + " cannot be found on the classpath");
+		super("Provider enum " + providerEnum.getProviderName() + ":" + providerEnum.getEnumTypeClassName() + "."
+				+ providerEnum.getEnumName() + " cannot be found on the classpath");
 	}
 
 }

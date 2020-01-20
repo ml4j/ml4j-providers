@@ -21,9 +21,9 @@ import org.ml4j.provider.enums.ProviderEnums;
 import org.ml4j.provider.enums.TypeEnum;
 
 /**
- * Represents an Enum for an ActivationFunctionType in a provider-agnostic manner.
- * Allows for decoupling of the representation of an ActivationFunctionType with the
- * actual provider-specific Enum class.
+ * Represents an Enum for an ActivationFunctionType in a provider-agnostic
+ * manner. Allows for decoupling of the representation of an
+ * ActivationFunctionType with the actual provider-specific Enum class.
  * 
  * @author Michael Lavelle
  */
@@ -32,18 +32,18 @@ public class ActivationFunctionTypeEnum extends TypeEnum {
 	public ActivationFunctionTypeEnum(ProviderEnums providerEnums) {
 		super(providerEnums);
 	}
-	
+
 	public static Optional<ActivationFunctionTypeEnum> findByProviderEnum(DefaultProviderEnum<?> providerEnum) {
 		return findByQualifiedEnumName(providerEnum.getQualifiedEnumName());
 	}
-	
+
 	public static Optional<ActivationFunctionTypeEnum> findByEnumValue(Enum<?> enumValue) {
 		return findByQualifiedEnumName(enumValue.getDeclaringClass().getName() + "." + enumValue);
 	}
-	
+
 	public static Optional<ActivationFunctionTypeEnum> findByQualifiedEnumName(String qualifiedEnumName) {
-		return Arrays.asList(ProviderEnums.values()).stream().filter(e -> e.getQualifiedEnumNames()
-				.contains(qualifiedEnumName)).map(e -> new ActivationFunctionTypeEnum(e))
-				.findFirst();
+		return Arrays.asList(ProviderEnums.values()).stream()
+				.filter(e -> e.getQualifiedEnumNames().contains(qualifiedEnumName))
+				.map(e -> new ActivationFunctionTypeEnum(e)).findFirst();
 	}
 }
