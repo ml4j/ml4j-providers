@@ -18,16 +18,16 @@ import java.util.function.Supplier;
 import org.ml4j.provider.Provider;
 
 /**
- * Represents an Enum for an specific type in a provider-agnostic manner.
- * Allows for decoupling of the representation of the type with the
- * actual provider-specific Enum class.
+ * Represents an Enum for an specific type in a provider-agnostic manner. Allows
+ * for decoupling of the representation of the type with the actual
+ * provider-specific Enum class.
  * 
  * @author Michael Lavelle
  */
 public class TypeEnum {
-	
+
 	private ProviderEnums providerEnums;
-	
+
 	protected TypeEnum(ProviderEnums providerEnums) {
 		this.providerEnums = providerEnums;
 	}
@@ -35,11 +35,11 @@ public class TypeEnum {
 	public ProviderEnum providedBy(Provider provider) {
 		return providerEnums.providedBy(provider);
 	}
-	
+
 	public ProviderEnum providedBy(String provider) {
 		return providerEnums.providedBy(provider);
 	}
-	
+
 	public static <T extends TypeEnum> T get(Supplier<T> type) {
 		return type.get();
 	}
@@ -71,5 +71,4 @@ public class TypeEnum {
 		return true;
 	}
 
-	
 }

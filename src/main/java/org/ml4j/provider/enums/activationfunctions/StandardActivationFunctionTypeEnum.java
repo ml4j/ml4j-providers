@@ -18,15 +18,14 @@ import java.util.function.Supplier;
 import org.ml4j.provider.enums.ProviderEnums;
 
 public enum StandardActivationFunctionTypeEnum implements Supplier<ActivationFunctionTypeEnum> {
-	
-	RELU(new ActivationFunctionTypeEnum(ProviderEnums.RELU_ENUM)), 
-	SIGMOID(new ActivationFunctionTypeEnum(ProviderEnums.SIGMOID_ENUM)), 
+
+	RELU(new ActivationFunctionTypeEnum(ProviderEnums.RELU_ENUM)),
+	SIGMOID(new ActivationFunctionTypeEnum(ProviderEnums.SIGMOID_ENUM)),
 	LINEAR(new ActivationFunctionTypeEnum(ProviderEnums.LINEAR_ENUM)),
 	IDENTITY(new ActivationFunctionTypeEnum(ProviderEnums.LINEAR_ENUM));
-	
-	
+
 	ActivationFunctionTypeEnum activationFunctionType;
-	
+
 	StandardActivationFunctionTypeEnum(ActivationFunctionTypeEnum activationFunctionType) {
 		this.activationFunctionType = activationFunctionType;
 	}

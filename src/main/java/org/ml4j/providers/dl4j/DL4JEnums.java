@@ -27,52 +27,54 @@ import org.ml4j.provider.enums.ProviderEnums;
  * @author Michael Lavelle
  *
  */
-public enum DL4JEnums implements ProviderEnum{
+public enum DL4JEnums implements ProviderEnum {
 
 	RELU(ProviderEnums.RELU_ENUM, getNd4jActivationEnumClassName(), "RELU"),
 	SIGMOID(ProviderEnums.SIGMOID_ENUM, getNd4jActivationEnumClassName(), "SIGMOID"),
 	SOFTMAX(ProviderEnums.SOFTMAX_ENUM, getNd4jActivationEnumClassName(), "SOFTMAX"),
 	IDENTITY(ProviderEnums.LINEAR_ENUM, getNd4jActivationEnumClassName(), "IDENTITY"),
-	LEAKYRELU(ProviderEnums.LEAKY_RELU_ENUM,getNd4jActivationEnumClassName(), "LEAKYRELU");
-	
+	LEAKYRELU(ProviderEnums.LEAKY_RELU_ENUM, getNd4jActivationEnumClassName(), "LEAKYRELU");
+
 	static final String ND4J_ACTIVATION_CLASS_NAME = "org.nd4j.linalg.activations.Activation";
-	
+
 	static String getNd4jActivationEnumClassName() {
 		return ND4J_ACTIVATION_CLASS_NAME;
 	}
-	
+
 	DefaultProviderEnum<?> decoratedProviderEnum;
 	ProviderEnums providerEnums;
-	
+
 	DL4JEnums(ProviderEnums providerEnums, DefaultProviderEnum<?> decoratedProviderEnum) {
 		this.decoratedProviderEnum = decoratedProviderEnum;
 		this.providerEnums = providerEnums;
 	}
-	
+
 	DL4JEnums(ProviderEnums providerEnums, String enumTypeClassName, String enumName) {
 		this.decoratedProviderEnum = createDecoratedProviderEnum(enumTypeClassName, enumName);
 		this.providerEnums = providerEnums;
 	}
-	
+
 	<E extends Enum<E>> DL4JEnums(ProviderEnums providerEnums, E enumValue) {
 		this.decoratedProviderEnum = createDecoratedProviderEnum(enumValue);
 		this.providerEnums = providerEnums;
 	}
-	
+
 	static Provider getProvider() {
 		return Provider.DL4J;
 	}
-	
+
 	static <E extends Enum<E>> DefaultProviderEnum<?> createDecoratedProviderEnum(E enumValue) {
 		return new DefaultProviderEnum<>(getProvider(), enumValue);
 	}
-	
-	static <E extends Enum<E>> DefaultProviderEnum<?> createDecoratedProviderEnum(String enumTypeClassName, String enumName) {
+
+	static <E extends Enum<E>> DefaultProviderEnum<?> createDecoratedProviderEnum(String enumTypeClassName,
+			String enumName) {
 		return new DefaultProviderEnum<>(getProvider(), enumTypeClassName, enumName);
 	}
-	
+
 	public static Optional<? extends Enum<?>> getEnumByType(ProviderEnums providerEnums) {
-		return Arrays.asList(values()).stream().filter(e -> e.getProviderEnums().equals(providerEnums)).map(e -> e.getEnum()).findFirst();
+		return Arrays.asList(values()).stream().filter(e -> e.getProviderEnums().equals(providerEnums))
+				.map(e -> e.getEnum()).findFirst();
 	}
 
 	@Override

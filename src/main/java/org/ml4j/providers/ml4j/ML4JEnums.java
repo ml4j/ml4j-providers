@@ -28,7 +28,7 @@ import org.ml4j.provider.enums.ProviderEnums;
  * @author Michael Lavelle
  *
  */
-public enum ML4JEnums implements ProviderEnum{
+public enum ML4JEnums implements ProviderEnum {
 
 	RELU(ProviderEnums.RELU_ENUM, ActivationFunctionBaseType.RELU),
 	SIGMOID(ProviderEnums.SIGMOID_ENUM, ActivationFunctionBaseType.SIGMOID),
@@ -37,14 +37,15 @@ public enum ML4JEnums implements ProviderEnum{
 
 	Enum<?> enumValue;
 	ProviderEnums providerEnums;
-	
+
 	ML4JEnums(ProviderEnums providerEnums, Enum<?> enumValue) {
 		this.enumValue = enumValue;
 		this.providerEnums = providerEnums;
 	}
-	
+
 	public static Optional<? extends Enum<?>> getEnumByType(ProviderEnums providerEnums) {
-		return Arrays.asList(values()).stream().filter(e -> e.getProviderEnums().equals(providerEnums)).map(e -> e.getEnum()).findFirst();
+		return Arrays.asList(values()).stream().filter(e -> e.getProviderEnums().equals(providerEnums))
+				.map(e -> e.getEnum()).findFirst();
 	}
 
 	@Override
