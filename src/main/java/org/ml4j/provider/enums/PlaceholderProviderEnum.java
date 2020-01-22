@@ -29,14 +29,33 @@ public class PlaceholderProviderEnum extends DefaultProviderEnum<PlaceholderProv
 	 * Default serialization id
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private boolean visible;
 
+	public PlaceholderProviderEnum(Provider provider, String enumTypeClassName, String enumName) {
+		super(provider, enumTypeClassName, enumName);
+		this.visible = false;
+	}
+	
 	public PlaceholderProviderEnum(Provider provider, String enumName) {
 		super(provider, "tbc", enumName);
+		this.visible = false;
+	}
+	
+	public PlaceholderProviderEnum(Provider provider, String enumTypeClassName, String enumName, boolean visible) {
+		super(provider, enumTypeClassName, enumName);
+		this.visible = visible;
+	}
+	
+	public PlaceholderProviderEnum(Provider provider, String enumName, boolean visible) {
+		super(provider, "tbc", enumName);
+		this.visible = false;
+		this.visible = visible;
 	}
 
 	@Override
-	public boolean isPlaceholder() {
-		return true;
+	public boolean isVisible() {
+		return visible;
 	}
 
 }

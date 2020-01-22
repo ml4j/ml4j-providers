@@ -25,8 +25,8 @@ public interface ProviderEnum {
 
 	String getProviderName();
 
-	default boolean isPlaceholder() {
-		return false;
+	default boolean isVisible() {
+		return true;
 	}
 
 	default String getEnumName() {

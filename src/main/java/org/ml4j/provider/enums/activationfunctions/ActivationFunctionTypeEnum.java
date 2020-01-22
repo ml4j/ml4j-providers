@@ -38,10 +38,11 @@ public class ActivationFunctionTypeEnum extends TypeEnum {
 	}
 
 	public static Optional<ActivationFunctionTypeEnum> findByEnumValue(Enum<?> enumValue) {
+		
 		return findByQualifiedEnumName(enumValue.getDeclaringClass().getName() + "." + enumValue);
 	}
 
-	public static Optional<ActivationFunctionTypeEnum> findByQualifiedEnumName(String qualifiedEnumName) {
+	public static Optional<ActivationFunctionTypeEnum> findByQualifiedEnumName(String qualifiedEnumName) {	
 		return Arrays.asList(ProviderEnums.values()).stream()
 				.filter(e -> e.getQualifiedEnumNames().contains(qualifiedEnumName))
 				.map(e -> new ActivationFunctionTypeEnum(e)).findFirst();

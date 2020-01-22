@@ -22,7 +22,8 @@ public enum StandardActivationFunctionTypeEnum implements Supplier<ActivationFun
 	RELU(new ActivationFunctionTypeEnum(ProviderEnums.RELU_ENUM)),
 	SIGMOID(new ActivationFunctionTypeEnum(ProviderEnums.SIGMOID_ENUM)),
 	LINEAR(new ActivationFunctionTypeEnum(ProviderEnums.LINEAR_ENUM)),
-	IDENTITY(new ActivationFunctionTypeEnum(ProviderEnums.LINEAR_ENUM));
+	IDENTITY(new ActivationFunctionTypeEnum(ProviderEnums.LINEAR_ENUM)),
+	LEAKYRELU(new ActivationFunctionTypeEnum(ProviderEnums.LEAKY_RELU_ENUM));
 
 	ActivationFunctionTypeEnum activationFunctionType;
 

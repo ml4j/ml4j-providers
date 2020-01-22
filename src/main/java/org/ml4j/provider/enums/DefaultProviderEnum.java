@@ -88,7 +88,7 @@ public class DefaultProviderEnum<T extends DefaultProviderEnum<T>> implements Pr
 	 * @return by default ProviderEnums are not placeholders - can be overridden by
 	 *         subclasses.
 	 */
-	public boolean isPlaceholder() {
+	public boolean isVisible() {
 		return false;
 	}
 
