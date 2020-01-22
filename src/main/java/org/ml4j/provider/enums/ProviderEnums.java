@@ -38,7 +38,8 @@ public enum ProviderEnums {
 
 	SOFTMAX_ENUM("Softmax Enums", ML4JEnums.SOFTMAX, DL4JEnums.SOFTMAX),
 
-	LEAKY_RELU_ENUM("Leaky Relu Enums", new PlaceholderProviderEnum(Provider.ML4J, "LEAKYRELU"), DL4JEnums.LEAKYRELU);
+	LEAKY_RELU_ENUM("Leaky Relu Enums", new PlaceholderProviderEnum(Provider.ML4J, 
+			"org.ml4j.nn.activationfunctions.ActivationFunctionBaseType", "LEAKYRELU", true), DL4JEnums.LEAKYRELU);
 
 	private final String artifactType;
 
@@ -63,22 +64,22 @@ public enum ProviderEnums {
 	}
 
 	ProviderEnum providedBy(String providerName) {
-		return providerEnums.stream().filter(e -> e.getProviderName().equals(providerName) && !e.isPlaceholder())
+		return providerEnums.stream().filter(e -> e.getProviderName().equals(providerName) && e.isVisible())
 				.findFirst().orElseThrow(() -> new ProviderEnumNotFoundException(this, providerName));
 	}
 
 	public Set<String> getEnumProviderNames() {
-		return providerEnums.stream().filter(e -> !e.isPlaceholder()).map(e -> e.getProviderName())
+		return providerEnums.stream().filter(e -> e.isVisible()).map(e -> e.getProviderName())
 				.collect(Collectors.toSet());
 	}
 
 	public Set<String> getEnumNames() {
-		return providerEnums.stream().filter(e -> !e.isPlaceholder()).map(e -> e.getEnumName())
+		return providerEnums.stream().filter(e -> e.isVisible()).map(e -> e.getEnumName())
 				.collect(Collectors.toSet());
 	}
 
 	public Set<String> getQualifiedEnumNames() {
-		return providerEnums.stream().filter(e -> !e.isPlaceholder()).map(e -> e.getQualifiedEnumName())
+		return providerEnums.stream().filter(e -> e.isVisible()).map(e -> e.getQualifiedEnumName())
 				.collect(Collectors.toSet());
 	}
 
