@@ -49,7 +49,6 @@ public class PlaceholderProviderEnum extends DefaultProviderEnum<PlaceholderProv
 	
 	public PlaceholderProviderEnum(Provider provider, String enumName, boolean visible) {
 		super(provider, "tbc", enumName);
-		this.visible = false;
 		this.visible = visible;
 	}
 
