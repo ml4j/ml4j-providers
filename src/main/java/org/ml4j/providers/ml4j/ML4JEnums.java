@@ -33,7 +33,8 @@ public enum ML4JEnums implements ProviderEnum {
 	RELU(ProviderEnums.RELU_ENUM, ActivationFunctionBaseType.RELU),
 	SIGMOID(ProviderEnums.SIGMOID_ENUM, ActivationFunctionBaseType.SIGMOID),
 	SOFTMAX(ProviderEnums.SOFTMAX_ENUM, ActivationFunctionBaseType.SOFTMAX),
-	LINEAR(ProviderEnums.LINEAR_ENUM, ActivationFunctionBaseType.LINEAR);
+	LINEAR(ProviderEnums.LINEAR_ENUM, ActivationFunctionBaseType.LINEAR),
+	LEAKYRELU(ProviderEnums.LEAKY_RELU_ENUM, ActivationFunctionBaseType.LEAKYRELU);
 
 	Enum<?> enumValue;
 	ProviderEnums providerEnums;
