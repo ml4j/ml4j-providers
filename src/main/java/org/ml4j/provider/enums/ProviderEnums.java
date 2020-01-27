@@ -38,8 +38,7 @@ public enum ProviderEnums {
 
 	SOFTMAX_ENUM("Softmax Enums", ML4JEnums.SOFTMAX, DL4JEnums.SOFTMAX),
 
-	LEAKY_RELU_ENUM("Leaky Relu Enums", new PlaceholderProviderEnum(Provider.ML4J, 
-			"org.ml4j.nn.activationfunctions.ActivationFunctionBaseType", "LEAKYRELU", true), DL4JEnums.LEAKYRELU);
+	LEAKY_RELU_ENUM("Leaky Relu Enums", ML4JEnums.LEAKYRELU, DL4JEnums.LEAKYRELU);
 
 	private final String artifactType;
 
