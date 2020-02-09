@@ -74,7 +74,7 @@ public enum DL4JEnums implements ProviderEnum {
 
 	public static Optional<? extends Enum<?>> getEnumByType(ProviderEnums providerEnums) {
 		return Arrays.asList(values()).stream().filter(e -> e.getProviderEnums().equals(providerEnums))
-				.map(e -> e.getEnum()).findFirst();
+				.map(DL4JEnums::getEnum).findFirst();
 	}
 
 	@Override

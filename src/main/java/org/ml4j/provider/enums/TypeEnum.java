@@ -15,6 +15,8 @@ package org.ml4j.provider.enums;
 
 import java.util.function.Supplier;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.ml4j.provider.Provider;
 
 /**
@@ -50,25 +52,12 @@ public class TypeEnum {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((providerEnums == null) ? 0 : providerEnums.hashCode());
-		return result;
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TypeEnum other = (TypeEnum) obj;
-		if (providerEnums != other.providerEnums)
-			return false;
-		return true;
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
-
 }
