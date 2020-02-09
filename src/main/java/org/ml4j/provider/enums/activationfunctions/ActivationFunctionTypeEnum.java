@@ -45,6 +45,6 @@ public class ActivationFunctionTypeEnum extends TypeEnum {
 	public static Optional<ActivationFunctionTypeEnum> findByQualifiedEnumName(String qualifiedEnumName) {	
 		return Arrays.asList(ProviderEnums.values()).stream()
 				.filter(e -> e.getQualifiedEnumNames().contains(qualifiedEnumName))
-				.map(e -> new ActivationFunctionTypeEnum(e)).findFirst();
+				.map(ActivationFunctionTypeEnum::new).findFirst();
 	}
 }

@@ -42,12 +42,12 @@ public enum ProviderEnums {
 
 	private final String artifactType;
 
-	private final Set<ProviderEnum> providerEnums;
+	private final Set<ProviderEnum> providerEnumsSet;
 
 	ProviderEnums(String artifactType, ProviderEnum... providerEnums) {
 		this.artifactType = artifactType;
-		this.providerEnums = new HashSet<>();
-		this.providerEnums.addAll(Arrays.asList(providerEnums));
+		this.providerEnumsSet = new HashSet<>();
+		this.providerEnumsSet.addAll(Arrays.asList(providerEnums));
 	}
 
 	public String getArtifactType() {
@@ -55,7 +55,7 @@ public enum ProviderEnums {
 	}
 
 	public Set<ProviderEnum> providedByAll() {
-		return providerEnums;
+		return providerEnumsSet;
 	}
 
 	public ProviderEnum providedBy(Provider provider) {
@@ -63,22 +63,22 @@ public enum ProviderEnums {
 	}
 
 	ProviderEnum providedBy(String providerName) {
-		return providerEnums.stream().filter(e -> e.getProviderName().equals(providerName) && e.isVisible())
+		return providerEnumsSet.stream().filter(e -> e.getProviderName().equals(providerName) && e.isVisible())
 				.findFirst().orElseThrow(() -> new ProviderEnumNotFoundException(this, providerName));
 	}
 
 	public Set<String> getEnumProviderNames() {
-		return providerEnums.stream().filter(e -> e.isVisible()).map(e -> e.getProviderName())
+		return providerEnumsSet.stream().filter(ProviderEnum::isVisible).map(ProviderEnum::getProviderName)
 				.collect(Collectors.toSet());
 	}
 
 	public Set<String> getEnumNames() {
-		return providerEnums.stream().filter(e -> e.isVisible()).map(e -> e.getEnumName())
+		return providerEnumsSet.stream().filter(ProviderEnum::isVisible).map(ProviderEnum::getEnumName)
 				.collect(Collectors.toSet());
 	}
 
 	public Set<String> getQualifiedEnumNames() {
-		return providerEnums.stream().filter(e -> e.isVisible()).map(e -> e.getQualifiedEnumName())
+		return providerEnumsSet.stream().filter(ProviderEnum::isVisible).map(ProviderEnum::getQualifiedEnumName)
 				.collect(Collectors.toSet());
 	}
 

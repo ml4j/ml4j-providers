@@ -15,6 +15,8 @@ package org.ml4j.provider.enums;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.ml4j.provider.Provider;
 
 /**
@@ -88,6 +90,7 @@ public class DefaultProviderEnum<T extends DefaultProviderEnum<T>> implements Pr
 	 * @return by default ProviderEnums are not placeholders - can be overridden by
 	 *         subclasses.
 	 */
+	@Override
 	public boolean isVisible() {
 		return false;
 	}
@@ -125,6 +128,7 @@ public class DefaultProviderEnum<T extends DefaultProviderEnum<T>> implements Pr
 	/**
 	 * @return the enum constant name.
 	 */
+	@Override
 	public String getEnumName() {
 		return enumName;
 	}
@@ -143,6 +147,7 @@ public class DefaultProviderEnum<T extends DefaultProviderEnum<T>> implements Pr
 		return providerName;
 	}
 
+	@Override
 	public String getQualifiedEnumName() {
 		return enumTypeClassName + "." + enumName;
 	}
@@ -153,40 +158,13 @@ public class DefaultProviderEnum<T extends DefaultProviderEnum<T>> implements Pr
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((enumName == null) ? 0 : enumName.hashCode());
-		result = prime * result + ((enumTypeClassName == null) ? 0 : enumTypeClassName.hashCode());
-		result = prime * result + ((providerName == null) ? 0 : providerName.hashCode());
-		return result;
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DefaultProviderEnum<?> other = (DefaultProviderEnum<?>) obj;
-		if (enumName == null) {
-			if (other.enumName != null)
-				return false;
-		} else if (!enumName.equals(other.enumName))
-			return false;
-		if (enumTypeClassName == null) {
-			if (other.enumTypeClassName != null)
-				return false;
-		} else if (!enumTypeClassName.equals(other.enumTypeClassName))
-			return false;
-		if (providerName == null) {
-			if (other.providerName != null)
-				return false;
-		} else if (!providerName.equals(other.providerName))
-			return false;
-		return true;
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
 	}
 
 }

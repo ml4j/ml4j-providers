@@ -13,6 +13,8 @@
  */
 package org.ml4j.provider.enums;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.ml4j.provider.Provider;
 
 /**
@@ -56,5 +58,16 @@ public class PlaceholderProviderEnum extends DefaultProviderEnum<PlaceholderProv
 	public boolean isVisible() {
 		return visible;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
 
 }
